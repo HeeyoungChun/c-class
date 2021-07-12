@@ -1,0 +1,84 @@
+#ifndef dayType_H_INCLUDED
+#define dayType_H_INCLUDED
+#include <iostream>
+#include <string>
+using namespace std;
+
+class TestScores
+{
+private:
+	double score1;
+	double score2;
+	double score3;
+public:
+	TestScores()
+	{
+		score1 = 0;
+		score2 = 0;
+		score3 = 0;
+	}
+	TestScores(double sc1, double sc2, double sc3)
+	{
+		score1 = sc1;
+		score2 = sc2;
+		score3 = sc3;
+	}
+	void setScore1(double sc1)
+	{
+		score1 = sc1;
+	}
+	void setScore2(double sc2)
+	{
+		score2 = sc2;
+	}
+	void setScore3(double sc3)
+	{
+		score3 = sc3;
+	}
+	double getScore1()const
+	{
+		return score1;
+	}
+	double getScore2()const
+	{
+		return score2;
+	}
+	double getScore3()const
+	{
+		return score3;
+	}
+	double getAverage()const
+	{
+		return(score1 + score2 + score3) / 3.0;
+	}
+};
+#endif
+
+----------------------------------------------------------------------------
+
+#include "class.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	TestScores obj;
+	double first, second, third;
+
+	cout << "Please enter the first score: ";
+	cin >> first;
+	obj.setScore1(first);
+
+	cout << "Please enter the second score: ";
+	cin >> second;
+	obj.setScore2(second);
+
+	cout << "Please enter the third score: ";
+	cin >> third;
+	obj.setScore3(third);
+
+	cout << "The average is " << obj.getAverage() << endl;
+
+	return 0;
+}
