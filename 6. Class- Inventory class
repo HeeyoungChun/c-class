@@ -1,0 +1,112 @@
+#ifndef dayType_H_INCLUDED
+#define dayType_H_INCLUDED
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Inventory
+{
+private:
+	int itemNumber;
+	int quantity;
+	double cost;
+	double totalCost;
+public:
+	void setTotalCost(double tc)
+	{
+		if (tc < 0.0)
+		{
+			cout << "The input cannot be less than zero\n";
+		}
+		else
+		{
+			totalCost = quantity * cost;
+		}
+	}
+	Inventory()
+	{
+		itemNumber = 0;
+		quantity = 0;
+		cost = 0;
+		totalCost = 0;
+	}
+	Inventory(int i, int q, double c)
+	{
+		itemNumber = i;
+		quantity = q;
+		cost = c;
+		setTotalCost(0);
+	}
+	void setItemNumber(int i)
+	{
+		if (i < 0)
+		{
+			cout << "The input should not be lower than zero\n";
+			return;
+		}
+		else
+		{
+			itemNumber = i;
+		}
+	}
+	void setQuantity(int q)
+	{
+		if (q < 0)
+		{
+			cout << "The input cannot be less than zero\n";
+		}
+		else
+		{
+			quantity = q;
+		}
+	}
+	void setCost(double c)
+	{
+		if (c < 0.0)
+		{
+			cout << "The input cannot be less than zero\n";
+		}
+		else
+		{
+			cost = c;
+		}
+	}
+	int getItemNumber()
+	{
+		return itemNumber;
+	}
+	int getQuantity()
+	{
+		return quantity;
+	}
+	double getCost()
+	{
+		return cost;
+	}
+	double getTotalCost()
+	{
+		return totalCost;
+	}
+};
+#endif
+
+
+
+
+-------------------------------------------------------
+#include "dayType.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	Inventory obj1(1, 2, 4.65);
+
+	cout << "Item number: " << obj1.getItemNumber() << "\n"
+		<< "Quantity: " << obj1.getQuantity() << "\n"
+		<< "Cost: " << obj1.getCost() << "\n"
+		<< "Total cost: " << obj1.getTotalCost() << "\n\n";
+
+	return 0;
+}
