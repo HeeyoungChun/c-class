@@ -1,0 +1,65 @@
+#ifndef class_h_INCLUDED
+#define class_h_INCLUDED
+#include <string>
+#include <iostream>
+
+class Circle
+{
+private:
+	double radius;
+	double pi = 3.14159;
+public:
+	Circle()
+	{
+		radius = 0.0;
+	}
+	Circle(double r)
+	{
+		radius = r;
+		pi = 3.14159;
+	}
+	void setRadius(double r)
+	{
+		radius = r;
+	}
+	double getRadius()
+	{
+		return radius;
+	}
+	double getArea()
+	{
+		return pi * radius * radius;
+	}
+	double getCircumference()
+	{
+		return 2 * pi * radius;
+	}
+	double getDiameter()
+	{
+		return radius * 2;
+	}
+};
+#endif
+
+---------------------------------------------------------------------------
+
+#include "class.h"
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	Circle obj;
+	double radius;
+
+	cout << "Enter the radius: ";
+	cin >> radius;
+	obj.setRadius(radius);
+
+	cout << "Diameter: " << obj.getDiameter() << "\n"
+		<< "Circumference: " << obj.getCircumference() << "\n"
+		<< "Area: " << obj.getArea() << "\n";
+
+	return 0;
+}
