@@ -1,0 +1,100 @@
+#ifndef Class_H_INCLUDED
+#define Class_H_INCLUDED
+#include <iostream>
+using namespace std;
+
+class Population
+{
+private:
+	int birthNum, deathNum, population;
+public:
+	Population()
+	{
+		birthNum = 0;
+		deathNum = 0;
+		population = 2;
+	}
+	Population(int bn, int dn, int p)
+	{
+		birthNum = bn;
+		deathNum = dn;
+		population = p;
+	}
+	void setBirthNum(int bn)
+	{
+		if (bn < 0)
+		{
+			cout << "Birth number input error";
+			return;
+		}
+		else
+		{
+			birthNum = bn;
+		}
+	}
+	void setDeathNum(int dn)
+	{
+		if (dn < 0)
+		{
+			cout << "Death number input error";
+			return;
+		}
+		else
+		{
+			deathNum = dn;
+		}
+	}
+	void setPopulation(int p)
+	{
+		if (p < 1)
+		{
+			cout << "Population input error";
+			return;
+		}
+		else
+		{
+			population = p;
+		}
+	}
+	double getBirthRate()
+	{
+		return static_cast<double>(birthNum)/population;
+	}
+	double getDeathRate()
+	{
+		return static_cast<double>(deathNum)/population;
+	}
+};
+#endif
+
+--------------------------------------------------------------------------------
+
+#include "Class.h"
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	Population obj1, obj2(2,4,20);
+	int birthNum, deathNum, population;
+
+	cout << "Enter the birth number: ";
+	cin >> birthNum;
+	obj1.setBirthNum(birthNum);
+
+	cout << "Enter the death number: "; 
+	cin >> deathNum;
+	obj1.setDeathNum(deathNum);
+
+	cout << "Enter the population: ";
+	cin >> population;
+	obj1.setPopulation(population);
+
+	cout << "BirthRate 1: " << obj1.getBirthRate() << endl;
+	cout << "DeathRate 1: " << obj1.getDeathRate() << endl;
+
+	cout << "BirthRate 2: " << obj2.getBirthRate() << endl;
+	cout << "DeathRate 2: " << obj2.getDeathRate() << endl;
+
+	return 0;
+}
