@@ -1,0 +1,80 @@
+#ifndef Class_H_INCLUDED
+#define Class_H_INCLUDED
+
+class Payroll
+{
+private:
+	double payrate, workhours;
+public:
+	Payroll()
+	{
+		payrate = 0;
+		workhours = 0;
+	}
+	void setPayRate(double r)
+	{
+		payrate = r;
+	}
+	void setHours(double);
+	double getTotalPay()const
+	{
+		return payrate * workhours;
+	}
+};
+#endif
+
+-----------------------------------------------------------------------------------------
+
+#include "Class.h"
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+void Payroll::setHours(double h)
+{
+	if (h > 60)
+	{
+		cout << "Error!";
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		workhours = h;
+	}
+}
+
+-------------------------------------------------------------------------------------------
+
+#include <iostream>
+#include <iomanip>
+#include "Class.h"
+using namespace std;
+
+const int NUM_EMPLOYEE = 3;
+
+int main()
+{
+	Payroll obj[NUM_EMPLOYEE];
+
+	cout << "Enter the pay rate and worked hours of " << NUM_EMPLOYEE << " employee.\n";
+	double rate, hours;
+
+	for (int i = 0; i < NUM_EMPLOYEE; i++)
+	{
+		cout << "# " << (i + 1) << " employee's pay rate: \n";
+		cin >> rate;
+		obj[i].setPayRate(rate);
+
+		cout << "# " << (i + 1) << " employee's worked hours: \n";
+		cin >> hours;
+		obj[i].setHours(hours);
+	}
+
+	for (int i = 0; i < NUM_EMPLOYEE; i++)
+	{
+		cout << "Total pay of employee # " << (i + 1) << ": "
+			<< obj[i].getTotalPay() << endl;
+	}
+
+	return 0;
+}
