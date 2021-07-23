@@ -1,0 +1,50 @@
+class Coin
+{
+	private String sideUp;
+	public Coin()
+	{
+		toss();
+	}
+	public void toss()
+	{
+		Random rand = new Random();
+		int value = rand.nextInt(2);
+		if(value == 0)
+		{
+			this.sideUp = "heads";
+		}
+		else
+		{
+			this.sideUp = "tails";
+		}
+	}
+	public String getSideUp()
+	{
+		return sideUp;
+	}
+}
+
+------------------------------------------------------------------------------
+
+static final int NUMBER_OF_TOSSES = 20;
+
+public static void main(String args [])
+{
+	CoinTossSimulator coinTossSimulator = new CoinTossSimulator();
+	Coin myCoin = coinTossSimulator.new Coin();
+	
+	System.out.println("Initially this side was up: " + myCoin.getSideUp());
+	System.out.println("Toss the coin " + NUMBER_OF_TOSSES + " times");
+	int headCount = 0;
+	for(int i=0; i<NUMBER_OF_TOSSES; i++)
+	{
+		myCoin.toss();
+		System.out.println("Toss: " + myCoin.getSideUp());
+		if("heads".equals(myCoin.getSideUp()))
+		{
+			headCount++;
+		}
+	}
+	System.out.println("head side up: " + headCount);
+	System.out.println("tail side up: " + (NUMBER_OF_TOSSES-headCount));
+}
